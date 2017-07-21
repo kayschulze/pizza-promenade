@@ -12,6 +12,15 @@ Pizza.prototype.calculateCost = function(pizza) {
   return this.cost++;
 };
 
+function Customer() {
+  this.first = "";
+  this.last = "";
+  this.street = "";
+  this.city = "";
+  this.state = "";
+  this.zip = "";
+};
+
 $(function() {
   $("#pizzaOrderForm").submit(function(event) {
     event.preventDefault();
@@ -44,6 +53,17 @@ $(function() {
         $(".order-display").append("<h3>" + element + " </h3>");
       });
     $(".order-display").append("<h3>pizza will be $" + yourPizza.cost + ".</h3>");
+
+    var currentCustomer = new Customer();
+    currentCustomer.first = $("input#firstName").val();
+    currentCustomer.last = $("#lastName").val();
+    currentCustomer.street = $("#streetAddress").val();
+    currentCustomer.city = $("#city").val();
+    currentCustomer.state = $("#state").val();
+    currentCustomer.zip = $("#zip").val();
+
+    $(".delivery-display").show();
+    $(".delivery-display").append("<h3>" + currentCustomer.first + " " + currentCustomer.last + "</br>" + currentCustomer.street + "</br>" + currentCustomer.city + ", " + currentCustomer.state + " " + currentCustomer.zip + "</h3>");
 
   });
 });

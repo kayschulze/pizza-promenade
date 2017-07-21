@@ -5,3 +5,7 @@
 .order-placeholder {
   float: left;
 }
+
+.delivery-display {
+  display: none;
+}
