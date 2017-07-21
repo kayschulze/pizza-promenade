@@ -1,17 +1,15 @@
 var yourPizza;
 var pizzaSizeCosts = [10, 15, 20];
-var pizzaCrustCosts = [0, 2.5, 5];
 
-function Pizza(size = "small", cost = 10, crust = "thin") {
+function Pizza(size = "small", cost = 10) {
   this.toppings = [];
   this.size = size;
   this.cost = cost;
-  this.crust = crust;
 };
 
 Pizza.prototype.calculateCost = function(pizza) {
 
-  return this.cost += 1;
+  return this.cost++;
 };
 
 function Customer() {
@@ -32,7 +30,6 @@ $(function() {
 
     yourPizza.size = $("input:radio[name=pizza-size]:checked").val();
 
-
     if (yourPizza.size === "small") {
       yourPizza.cost = pizzaSizeCosts[0];
     }
@@ -41,21 +38,6 @@ $(function() {
     }
     else if (yourPizza.size === "large") {
       yourPizza.cost = pizzaSizeCosts[2];
-    }
-
-    yourPizza.crust = $("input:radio[name=crust-type]:checked").val();
-
-    if (yourPizza.crust === "thin") {
-      yourPizza.cost += pizzaCrustCosts[0];
-    }
-    else if (yourPizza.crust === "deepDish") {
-      yourPizza.cost += pizzaCrustCosts[1];
-    }
-    else if (yourPizza.crust === "wholeWheat") {
-      yourPizza.cost += pizzaCrustCosts[2];
-    }
-    else if (yourPizza.crust === "glutenFree") {
-      yourPizza.cost += pizzaCrustCosts[2];
     }
 
     $("input:checkbox[name=pizza-toppings]:checked").each(function() {
@@ -71,8 +53,6 @@ $(function() {
         $(".order-display").append("<h3>" + element + " </h3>");
       });
     $(".order-display").append("<h3>pizza will be $" + yourPizza.cost + ".</h3>");
-
-
 
     var currentCustomer = new Customer();
     currentCustomer.first = $("input#firstName").val();
