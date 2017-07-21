@@ -1,17 +1,15 @@
 var yourPizza;
+var pizzaSizeCosts = [10, 15, 20];
 
-function Pizza(size, cost) {
+function Pizza(size = "small", cost = 10) {
   this.toppings = [];
   this.size = size;
   this.cost = cost;
 };
 
 Pizza.prototype.calculateCost = function(pizza) {
-  yourPizza.toppings.forEach(function() {
-    pizza.cost += 1;
-  });
 
-  return this.cost;
+  return this.cost++;
 };
 
 $(function() {
@@ -19,10 +17,19 @@ $(function() {
     event.preventDefault();
     $(".order-display").empty();
 
-    pizzaSize = "small";
-    pizzaCost = 10;
+    yourPizza = new Pizza();
 
-    yourPizza = new Pizza(pizzaSize, pizzaCost);
+    yourPizza.size = $("input:radio[name=pizza-size]:checked").val();
+
+    if (yourPizza.size === "small") {
+      yourPizza.cost = pizzaSizeCosts[0];
+    }
+    else if (yourPizza.size === "medium") {
+      yourPizza.cost = pizzaSizeCosts[1];
+    }
+    else if (yourPizza.size === "large") {
+      yourPizza.cost = pizzaSizeCosts[2];
+    }
 
     $("input:checkbox[name=pizza-toppings]:checked").each(function() {
 
