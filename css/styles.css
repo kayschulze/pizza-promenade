@@ -40,6 +40,8 @@ body {
 
 .order-display {
   display: none;
+  background-color: pink;
+  border-radius: 30px;
 }
 
 .order-placeholder {
