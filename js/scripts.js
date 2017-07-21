@@ -22,6 +22,10 @@ Pizza.prototype.sizeCost = function(pizza) {
   return pizza.cost;
 };
 
+var resetFields = function() {
+  $("input.pizza-toppings").val(false);
+}
+
 Pizza.prototype.crustCost = function(pizza) {
   if (pizza.crust === "thin") {
     pizza.cost += pizzaCrustCosts[0];
@@ -61,48 +65,46 @@ Customer.prototype.displayCustomer = function(customer) {
   customer.zip = $("#zip").val();
 };
 
+var displayDelivery = function(currentCustomer) {
+  $(".delivery-display").show();
+  $(".delivery-display").append("<h3>" + currentCustomer.first + " " + currentCustomer.last + "</br>" + currentCustomer.street + "</br>" + currentCustomer.city + ", " + currentCustomer.state + " " + currentCustomer.zip + "</h3>");
+};
+
+var displayOrder = function(pizza) {
+  $(".order-placeholder").hide();
+  $(".order-display").show();
+  $(".order-display").append("<h3>Your </h3>");
+  pizza.toppings.forEach(function(topping) {
+    $(".order-display").append("<h3>" + topping + " </h3>");
+  });
+$(".order-display").append("<h3>pizza will be $" + pizza.cost + ".</h3>");
+};
+
 $(function() {
   $("#pizzaOrderForm").submit(function(event) {
     event.preventDefault();
     $(".order-display").empty();
 
+    // Compare input values to prices for pizza size and pizza crust.
     yourPizza = new Pizza();
-
     yourPizza.size = $("input:radio[name=pizza-size]:checked").val();
-
     yourPizza.cost = yourPizza.sizeCost(yourPizza);
-
     yourPizza.crust = $("input:radio[name=crust-type]:checked").val();
-
     yourPizza.cost = yourPizza.crustCost(yourPizza);
 
     $("input:checkbox[name=pizza-toppings]:checked").each(function() {
-
       var yourToppings = $(this).val();
       yourPizza.toppings.push(yourToppings);
       yourPizza.calculateCost(yourPizza);
     });
-      $(".order-placeholder").hide();
-      $(".order-display").show();
-      $(".order-display").append("<h3>Your </h3>");
-      yourPizza.toppings.forEach(function(element) {
-        $(".order-display").append("<h3>" + element + " </h3>");
-      });
-    $(".order-display").append("<h3>pizza will be $" + yourPizza.cost + ".</h3>");
 
-
+    displayOrder(yourPizza);
 
     var currentCustomer = new Customer();
     currentCustomer.displayCustomer(currentCustomer);
-    // currentCustomer.first = $("input#firstName").val();
-    // currentCustomer.last = $("#lastName").val();
-    // currentCustomer.street = $("#streetAddress").val();
-    // currentCustomer.city = $("#city").val();
-    // currentCustomer.state = $("#state").val();
-    // currentCustomer.zip = $("#zip").val();
 
-    $(".delivery-display").show();
-    $(".delivery-display").append("<h3>" + currentCustomer.first + " " + currentCustomer.last + "</br>" + currentCustomer.street + "</br>" + currentCustomer.city + ", " + currentCustomer.state + " " + currentCustomer.zip + "</h3>");
+    displayDelivery(currentCustomer);
 
+    resetFields();
   });
 });
