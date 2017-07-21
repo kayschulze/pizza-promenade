@@ -26,11 +26,42 @@
       </div>
 
       <div class="col-md-6 options">
-        <div class="row toppings">
-        </div>
-        <div class="row size">
-        </div>
+        <h2>Options</h2>
+        <form id="pizzaOrderForm">
+          <div class="row toppings">
+          <h3>Toppings</h3>
+            <div class="form-group">
+              <p>Which of the following toppings would you like to add to your pizza?</p>
+              <input type="checkbox" name="pizza-toppings" value = "garlic"> Garlic <br>
+              <input type="checkbox" name="pizza-toppings" value = "spinach"> Spinach <br>
+              <input type="checkbox" name="pizza-toppings" value = "olives"> Olives <br>
+              <input type="checkbox" name="pizza-toppings" value = "tomatoes"> Tomatoes <br>
+              <input type="checkbox" name="pizza-toppings" value = "extra cheese"> Extra Cheese <br>
+              <input type="checkbox" name="pizza-toppings" value = "mushrooms"> Mushrooms <br>
+              <input type="checkbox" name="pizza-toppings" value = "artichokes"> Artichokes <br>
+            </div>
+          </div>
 
+          <div class="row size">
+            <h3>Pizza Sizes</h3>
+            <div class="radio">
+              <label><input type="radio" name="pizzaSize" value="small">Small $10</label>
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="pizzaSize" value="medium">Medium $15</label>
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="pizzaSize" value="large">Large $20</label>
+            </div>
+          </div>
+
+          <button id="order-pizza" type="submit">Submit Order</button>
+
+        </form>
+      </div>
+
+      <div class="col-md-3 order">
+        <h2>Your order will be here.</h2>
       </div>
     </div>
     <center>Kim Schulze &copy 2017</center>
