@@ -61,3 +61,16 @@ body {
   border-radius: 30px;
   padding: 10px;
 }
+
+.pizza {
+  cursor: pointer;
+  color: #0088cc;
+}
+
+.pizza:hover {
+  text-decoration: underline;
+}
+
+#myPizzas {
+  display: none;
+}

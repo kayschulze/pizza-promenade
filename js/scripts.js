@@ -47,13 +47,14 @@ Pizza.prototype.calculateCost = function(pizza) {
   return this.cost += 1;
 };
 
-function Customer() {
+function Customer(pizza) {
   this.first = "";
   this.last = "";
   this.street = "";
   this.city = "";
   this.state = "";
   this.zip = "";
+  this.pizzas = [];
 };
 
 Customer.prototype.displayCustomer = function(customer) {
@@ -87,9 +88,9 @@ $(function() {
 
     // Compare input values to prices for pizza size and pizza crust.
     yourPizza = new Pizza();
-    yourPizza.size = $("input:radio[name=pizza-size]:checked").val();
+    yourPizza.size = $(this).find("input:radio[name=pizza-size]:checked").val();
     yourPizza.cost = yourPizza.sizeCost(yourPizza);
-    yourPizza.crust = $("input:radio[name=crust-type]:checked").val();
+    yourPizza.crust = $(this).find("input:radio[name=crust-type]:checked").val();
     yourPizza.cost = yourPizza.crustCost(yourPizza);
 
     $("input:checkbox[name=pizza-toppings]:checked").each(function() {
@@ -98,13 +99,23 @@ $(function() {
       yourPizza.calculateCost(yourPizza);
     });
 
+    $("#myPizzas").show();
+    $("ul#pizzas").append("<li><span class='pizza'>Order 1</span></li>")
+
+    $(".pizza").last().click(function() {
+      $("ul#pizzas").text();
+    })
+
+    // Display customer's order and cost.
     displayOrder(yourPizza);
 
+    // Display customer's delivery address.
     var currentCustomer = new Customer();
     currentCustomer.displayCustomer(currentCustomer);
 
     displayDelivery(currentCustomer);
 
-    resetFields();
+    currentCustomer.pizzas.push(yourPizza);
+
   });
 });
