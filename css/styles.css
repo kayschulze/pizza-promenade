@@ -1,3 +1,7 @@
 .order-display {
   display: none;
 }
+
+.order-placeholder {
+  float: left;
+}
