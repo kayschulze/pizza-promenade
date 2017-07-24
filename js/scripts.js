@@ -78,8 +78,10 @@ var displayOrder = function(pizza) {
   $(".order-placeholder").hide();
   $("#order-display").show();
   $("#order-display h2").text("Your Pizza Order:");
+  console.log(pizza.toppings);
+  $(".toppings-choices").empty();
   pizza.toppings.forEach(function(topping) {
-    $(".toppings-choices").text(" " + topping + " ");
+    $(".toppings-choices").append(" " + topping + " ");
   });
   $(".size-choice").text(pizza.size);
   $(".crust-choice").text(pizza.crust);
@@ -101,12 +103,12 @@ $(function() {
       pizzaCounter++;
       yourPizza.pizzaNumber = pizzaCounter;
 
-
-      $("input:checkbox[name=pizza-toppings]:checked").each(function() {
-        var yourToppings = $(this).val();
-        yourPizza.toppings.push(yourToppings);
-        yourPizza.calculateCost(yourPizza);
+    $("input:checkbox[name=pizza-toppings]:checked").each(function()  {
+      var yourToppings = $(this).val();
+      yourPizza.toppings.push(yourToppings);
+      yourPizza.calculateCost(yourPizza);
     });
+
 
     $("#myPizzas").show();
 
