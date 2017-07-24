@@ -38,7 +38,7 @@ body {
   border-radius: 30px;
 }
 
-.order-display {
+#order-display {
   display: none;
   background-color: pink;
   border-radius: 30px;

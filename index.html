@@ -24,11 +24,13 @@
         <h4>Burien, WA 98146</h4>
         <strong>Since 2017</strong>
 
-        <div id="myPizzas">
-          <h3>My Pizzas</h3>
-          <ul id="pizzas"></ul>
-        </div>
+      <div id="myPizzas">
+        <h3>My Pizzas</h3>
+        <ul id="pizzas">
+
+        </ul>
       </div>
+    </div>
 
       <div class="col-md-5 options">
         <h2>Options</h2>
@@ -64,16 +66,16 @@
               <div class="col-md-6 crust">
                 <h3>Crust Types</h3>
                 <div class="radio">
-                  <label><input type="radio" name="crust-type" value="thin">Thin Crust </label>
+                  <label><input type="radio" name="crust-type" value="Thin">Thin Crust </label>
                 </div>
                 <div class="radio">
-                  <label><input type="radio" name="crust-type" value="deepDish">Deep Dish $3</label>
+                  <label><input type="radio" name="crust-type" value="Deep Dish">Deep Dish $3</label>
                 </div>
                 <div class="radio">
-                  <label><input type="radio" name="crust-type" value="wholeWheat">Whole Wheat $5</label>
+                  <label><input type="radio" name="crust-type" value="Whole Wheat">Whole Wheat $5</label>
                 </div>
                 <div class="radio">
-                  <label><input type="radio" name="crust-type" value="glutenFree">Gluten-Free $5</label>
+                  <label><input type="radio" name="crust-type" value="Gluten Free">Gluten-Free $5</label>
                 </div>
               </div>
 
@@ -112,8 +114,13 @@
         <h2>Your order will be here.</h2>
       </div>
 
-      <div class="col-md-4 order-display">
-        <h2>Here's your order:</h2>
+      <div class="col-md-4">
+        <div id="order-display">
+          <h2>Here's your order</h2>
+          <p>Toppings: <span class="toppings-choices"></span></p>
+          <p>Size: <span class="size-choice"></span></p>
+          <p>Crust: <span class="crust-choice"></span></p>
+        </div>
       </div>
 
       <div class="col-md-4 delivery-display">
