@@ -77,15 +77,14 @@ var displayDelivery = function(currentCustomer) {
 var displayOrder = function(pizza) {
   $(".order-placeholder").hide();
   $("#order-display").show();
-  $("#order-display h2").text("Your Pizza Order:");
-  console.log(pizza.toppings);
+  $("#order-display h2").text("Your Pizza #" + pizza.pizzaNumber + " Order:");
   $(".toppings-choices").empty();
   pizza.toppings.forEach(function(topping) {
     $(".toppings-choices").append(" " + topping + " ");
   });
   $(".size-choice").text(pizza.size);
   $(".crust-choice").text(pizza.crust);
-  //$(".order-display").text(pizza.cost);
+  $(".order-display").text(pizza.cost);
 };
 
 $(function() {
