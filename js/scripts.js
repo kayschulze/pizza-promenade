@@ -3,7 +3,7 @@ var pizzaSizeCosts = [10, 15, 20];
 var pizzaCrustCosts = [0, 3, 5];
 var pizzaCounter = 0;
 
-function Pizza(size = "small", cost = 10, crust = "thin", pizzaCounter = 0) {
+function Pizza(size = "Small", cost = 10, crust = "Thin", pizzaCounter = 0) {
   this.toppings = [];
   this.size = size;
   this.cost = cost;
@@ -12,13 +12,13 @@ function Pizza(size = "small", cost = 10, crust = "thin", pizzaCounter = 0) {
 };
 
 Pizza.prototype.sizeCost = function(pizza) {
-  if (pizza.size === "small") {
+  if (pizza.size === "Small") {
     pizza.cost = pizzaSizeCosts[0];
   }
-  else if (pizza.size === "medium") {
+  else if (pizza.size === "Medium") {
     pizza.cost = pizzaSizeCosts[1];
   }
-  else if (pizza.size === "large") {
+  else if (pizza.size === "Large") {
     pizza.cost = pizzaSizeCosts[2];
   }
   return pizza.cost;
@@ -29,16 +29,16 @@ var resetFields = function() {
 }
 
 Pizza.prototype.crustCost = function(pizza) {
-  if (pizza.crust === "thin") {
+  if (pizza.crust === "Thin") {
     pizza.cost += pizzaCrustCosts[0];
   }
-  else if (pizza.crust === "deepDish") {
+  else if (pizza.crust === "Deep Dish") {
     pizza.cost += pizzaCrustCosts[1];
   }
-  else if (pizza.crust === "wholeWheat") {
+  else if (pizza.crust === "Whole Wheat") {
     pizza.cost += pizzaCrustCosts[2];
   }
-  else if (pizza.crust === "glutenFree") {
+  else if (pizza.crust === "Gluten Free") {
     pizza.cost += pizzaCrustCosts[2];
   }
   return pizza.cost;
